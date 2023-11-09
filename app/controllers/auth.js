@@ -8,13 +8,11 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcrypt");
 
 exports.signup = (req, res) => {
-  console.log(`body = ${JSON.stringify(req.body)}`)
   User.create({
     username: req.body.username,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8)
   })
-  // console.log(`user created`)
     .then(user => {
       res.send({ message: "User was registered successfully!" });
     })
@@ -33,7 +31,7 @@ exports.signin = (req, res) => {
       if (!user) {
         return res.status(404).send({ message: "User Not found." });
       }
-
+      
       var passwordIsValid = bcrypt.compareSync(
         req.body.password,
         user.password
@@ -45,7 +43,7 @@ exports.signin = (req, res) => {
           message: "Invalid Password!"
         });
       }
-
+      
       const token = jwt.sign({ id: user.id },
                               config.secret,
                               {
@@ -54,7 +52,12 @@ exports.signin = (req, res) => {
                                 expiresIn: 86400, // 24 hours
                               });
 
-      
+                              res.status(200).send({
+                                id: user.id,
+                                username: user.username,
+                                email: user.email,
+                                accessToken: token
+                              });
     })
     .catch(err => {
       res.status(500).send({ message: err.message });
