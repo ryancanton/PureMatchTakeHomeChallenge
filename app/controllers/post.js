@@ -1,7 +1,7 @@
 const db = require("../models");
-const config = require("../config/auth.js");
 const Post = db.posts;
 const User = db.users;
+
 
 
 exports.createPost = (req, res) => {
@@ -24,10 +24,8 @@ exports.createPost = (req, res) => {
         photo: post.photo,
         description: post.description,
         userId: post.userId,
-        createdAt: post.createdAt});
+        createdAt: post.createdAt
+      });
     })
-    .catch(err => {
-      res.status(500).send({ message: err.message });
-    });
 });
 };
