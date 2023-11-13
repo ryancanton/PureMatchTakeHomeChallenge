@@ -15,5 +15,7 @@ module.exports = function(app) {
     [authJwt.verifyToken],
     controller.createPost
   );
+
+  app.get("/api/v1/post/:id", controller.getPost);
  
 };

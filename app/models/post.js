@@ -5,6 +5,9 @@ module.exports = (sequelize, Sequelize) => {
     },
     photo: {
       type: Sequelize.TEXT
+    },
+    createdAtTemp: {
+      type: Sequelize.DATE
     }
   });
 
