@@ -1,4 +1,4 @@
-# Project Title: Social Media App
+# Pure Match Take Home Challenge
 
 ## Overview
 This app is a back-end application developed as part of a technical challenge. It uses Express.js for the backend, PostgreSQL for the database, and integrates with AWS S3 for image storage. The application allows users to register, log in, create and manage posts.
