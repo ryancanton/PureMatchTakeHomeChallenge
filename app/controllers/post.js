@@ -23,13 +23,7 @@ exports.createPost = (req, res) => {
   })
     .then(post => {
       s3Client.pushToS3(post)
-      res.status(201).send({ 
-        id: post.id,
-        photos: post.photos,
-        description: post.description,
-        userId: post.userId,
-        createdAt: post.createdAt
-      });
+      res.status(201).send({ message: "Post created and uploaded to S3 successfully" });
     })
 });
 };
@@ -50,7 +44,6 @@ exports.getPost = (req, res) => {
       id: post.id,
       description: post.description,
       userId: post.userId,
-      createdAt: post.createdAt,
       postedAt: postedAt,
       photos: post.photos
     });
