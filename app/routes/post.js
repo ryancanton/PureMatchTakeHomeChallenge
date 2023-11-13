@@ -18,6 +18,8 @@ module.exports = function(app) {
     controller.createPost
   );
 
+  app.patch("/api/v1/post/:id", controller.updatePost);
+
   app.get("/api/v1/post/:id", controller.getPost);
  
 };

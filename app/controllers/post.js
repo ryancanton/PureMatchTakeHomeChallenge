@@ -56,3 +56,21 @@ exports.getPost = (req, res) => {
     });
 })
 };
+
+exports.updatePost = (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id
+    }
+  }).then(post => {
+    if (!post) {
+      return res.status(404).send({ message: "Post Not found." });
+    }
+    post.description = req.body.description;
+    post.save;
+    res.status(200).send({
+      id: post.id,
+      description: post.description
+    })
+  })
+};
