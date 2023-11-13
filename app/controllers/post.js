@@ -3,7 +3,7 @@ const Post = db.posts;
 const User = db.users;
 const s3Client = require("../models/s3Client.js");
 const timeDiff = require("../middleware/timeDiff");
-
+const validate = require("../middleware/validate")
 
 
 exports.createPost = (req, res) => {
@@ -15,8 +15,9 @@ exports.createPost = (req, res) => {
     if (!user) {
       return res.status(404).send({ message: "User Not found." });
     }
+  validate.validatePhotosLength
   Post.create({
-    photo: req.body.photo,
+    photos: req.body.photos,
     description: req.body.description,
     userId: req.body.userId
   })
@@ -24,7 +25,7 @@ exports.createPost = (req, res) => {
       s3Client.pushToS3(post)
       res.status(201).send({ 
         id: post.id,
-        photo: post.photo,
+        photos: post.photos,
         description: post.description,
         userId: post.userId,
         createdAt: post.createdAt
@@ -51,7 +52,7 @@ exports.getPost = (req, res) => {
       userId: post.userId,
       createdAt: post.createdAt,
       postedAt: postedAt,
-      photo: post.photo
+      photos: post.photos
     });
 })
 };

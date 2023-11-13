@@ -1,5 +1,3 @@
-const fileUpload = require("express-fileupload");
-
 const {
   S3Client,
   PutObjectCommand,
@@ -15,21 +13,22 @@ const s3Config = {
 };
 
 const s3Client = new S3Client(s3Config);
-
+ 
  exports.pushToS3 = async(post) => {
-  const file = post.photo;
-  const fileName = post.id;
+  const photos = post.photos;
+  const postId = post.id;
   
-  const bucketParams = {
-    Bucket: process.env.AWS_S3_BUCKET_NAME,
-    Key: fileName.toString(),
-    Body: file.toString()
-  };
-  try {
-    const data = await s3Client.send(new PutObjectCommand(bucketParams));
-    // res.send(data)
-  } catch (err) {
-    console.log("Error", err);
+  for (let i = 0; i < photos.length; i++) {
+    const bucketParams = {
+      Bucket: process.env.AWS_S3_BUCKET_NAME,
+      Key: postId.toString(),
+      Body: photos[i].toString()
+    };
+    try {
+      await s3Client.send(new PutObjectCommand(bucketParams));
+    } catch (err) {
+      console.log("Error", err);
+    }
   }
 }
 

@@ -2,9 +2,7 @@ const db = require("../models");
 const User = db.users;
 
 checkDuplicateUsernameOrEmail = (req, res, next) => {
-  // console.log(`db = ${JSON.stringify(db)}`)
-  console.log(`body = ${JSON.stringify(req.body)}`)
-  // console.log(`req = ${JSON.stringify(res)}`)
+  
   User.findOne({
     where: {
       username: req.body.username

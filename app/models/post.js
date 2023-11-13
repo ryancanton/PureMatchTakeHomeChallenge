@@ -3,8 +3,8 @@ module.exports = (sequelize, Sequelize) => {
     description: {
       type: Sequelize.STRING
     },
-    photo: {
-      type: Sequelize.TEXT
+    photos: {
+      type: Sequelize.ARRAY(Sequelize.TEXT)
     },
     createdAtTemp: {
       type: Sequelize.DATE

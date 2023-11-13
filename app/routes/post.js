@@ -1,5 +1,6 @@
 const authJwt = require("../middleware/authJwt");
 const controller = require("../controllers/post");
+const validate = require("../middleware/validate")
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -13,6 +14,7 @@ module.exports = function(app) {
   app.post(
     "/api/v1/post",
     [authJwt.verifyToken],
+    [validate.validatePhotosLength],
     controller.createPost
   );
 
