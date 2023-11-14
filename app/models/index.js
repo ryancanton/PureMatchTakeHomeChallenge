@@ -24,9 +24,16 @@ db.sequelize = sequelize;
 
 db.users = require("./user.js")(sequelize, Sequelize);
 db.posts = require("./post.js")(sequelize, Sequelize);
+db.friends = require("./friend.js")(sequelize, Sequelize);
 
 db.users.hasMany(db.posts, { as: "posts" });
 db.posts.belongsTo(db.users, {
+  foreignKey: "userId",
+  as: "user",
+});
+
+db.users.hasMany(db.friends, { as: "friends" });
+db.friends.belongsTo(db.users, {
   foreignKey: "userId",
   as: "user",
 });

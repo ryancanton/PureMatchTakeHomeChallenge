@@ -31,6 +31,7 @@ setTimeout(seeder.seedTables, 750);
 // routes
 require('./app/routes/auth')(app);
 require('./app/routes/post')(app);
+require('./app/routes/friend')(app);
 
 
 // set port, listen for requests
