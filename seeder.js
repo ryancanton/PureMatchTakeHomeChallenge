@@ -25,17 +25,17 @@ exports.seedTables = async (req, res) => {
   Post.create({
     photos: ["photo1", "photo2", "photo3"],
     description: "Neat Photo",
-    userId: bob.id
+    userId: 1
   });
   Post.create({
     photos: ["photo1", "photo2", "photo3", "photo4", "photo5"],
     description: "Cool picture",
-    userId: linda.id
+    userId: 2
   });
   Post.create({
     photos: ["photo1"],
     description: "Neatest Photo",
-    userId: carl.id
+    userId: 3
   });
   Friend.create({
     friendId: "1",
