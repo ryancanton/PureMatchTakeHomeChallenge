@@ -21,5 +21,7 @@ module.exports = function(app) {
   app.patch("/api/v1/post/:id", controller.updatePost);
 
   app.get("/api/v1/post/:id", controller.getPost);
+
+  app.get("/api/v1/posts", controller.getPosts);
  
 };

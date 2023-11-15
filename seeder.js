@@ -1,6 +1,7 @@
 const db = require("./app/models");
 const Post = db.posts;
 const User = db.users;
+const Friend = db.friends;
 
 var bcrypt = require("bcrypt");
 
@@ -36,5 +37,44 @@ exports.seedTables = async (req, res) => {
     description: "Neatest Photo",
     userId: carl.id
   });
+  Friend.create({
+    friendId: "1",
+    username: "Bob",
+    email: "bob@email.com",
+    userId: "2"
+  });
+  Friend.create({
+    friendId: "1",
+    username: "Bob",
+    email: "bob@email.com",
+    userId: "3"
+  });
+  Friend.create({
+    friendId: "2",
+    username: "Linda",
+    email: "linda@email.com",
+    userId: "1"
+  });
+  Friend.create({
+    friendId: "2",
+    username: "Linda",
+    email: "linda@email.com",
+    userId: "3"
+  });
+  Friend.create({
+    friendI: "3",
+    username: "Carl",
+    email: "carl@email.com",
+    userId: "1"
+  });
+  Friend.create({
+    friendId: "3",
+    username: "Carl",
+    email: "carl@email.com",
+    userId: "2"
+  });
+
+
+
   console.log("Database Seeded Successfully")
 }

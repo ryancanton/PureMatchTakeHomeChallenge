@@ -9,9 +9,7 @@ module.exports = (sequelize, Sequelize) => {
     password: {
       type: Sequelize.STRING
     }
-    // createdAtTemp: {
-    //   type: Sequelize.DATE
-    // }
+    
   });
 
   return User;
