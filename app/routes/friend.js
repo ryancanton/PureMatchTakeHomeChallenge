@@ -15,5 +15,10 @@ module.exports = function(app) {
     [authJwt.verifyToken],
     controller.addFriend
   );
+
+  app.get(
+    "/api/v1/user/:id/friends",
+    controller.getFriends
+  );
  
 };

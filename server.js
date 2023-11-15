@@ -27,7 +27,7 @@ db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync Database with { force: true }');
 });
 
-setTimeout(seeder.seedTables, 750);
+setTimeout(seeder.seedTables, 1000);
 // routes
 require('./app/routes/auth')(app);
 require('./app/routes/post')(app);

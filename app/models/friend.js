@@ -1,6 +1,15 @@
 module.exports = (sequelize, Sequelize) => {
   const Friend = sequelize.define("friends", {
-    friendID: {
+    friendId: {
+      type: Sequelize.INTEGER
+    },
+    mutualFriendsCount: {
+      type: Sequelize.INTEGER
+    },
+    username: {
+      type: Sequelize.STRING
+    },
+    email: {
       type: Sequelize.STRING
     }
   });
