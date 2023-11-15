@@ -43,6 +43,22 @@ These instructions will get you a copy of the project up and running on your loc
 - **Multiple Photo Uploads:** Modified the post model to handle multiple images (up to 5).
 - **Editing Posts:** Added an endpoint to edit the description of existing posts.
 
+- ### Requirement 3 (Branch: `feature/req3`)
+
+#### Features:
+- Pagination in post listing.
+- Users can add friends.
+- Friends List endpoint includes mutual friends count.
+
+#### Implementation Details:
+- **Pagination:** Implemented pagination in the posts endpoint using query parameters for page and limit. Used Sequelize limit and offest parameters to calculate 
+- **Friendship Feature:** Added a new model for friendships and endpoints to add and list friends.
+- **Mutual Friends Calculation:** Enhanced the Friends List endpoint to calculate and return the number of mutual friends.
+
+## Testing
+- Run automated tests: `npm test`
+- Postman collection is provided for API testing.
+
 #### Postman Screenshots:
 <p align="center">
 <img width="750" alt="signup1" src="https://github.com/ryancanton/PureMatchTakeHomeChallenge/assets/113324661/a9247f00-1668-415f-9236-5affd4f67326">
@@ -54,6 +70,12 @@ These instructions will get you a copy of the project up and running on your loc
 <img width="750" alt="post2" src="https://github.com/ryancanton/PureMatchTakeHomeChallenge/assets/113324661/9764bae1-1b22-4600-a754-c8eae0e921f0">
 <img width="750" alt="post2" src="https://github.com/ryancanton/PureMatchTakeHomeChallenge/assets/113324661/0a43fd79-c189-4e43-a293-d94a2dcfd5fa">
 <img width="750" alt="post4" src="https://github.com/ryancanton/PureMatchTakeHomeChallenge/assets/113324661/217963a4-e989-4444-bee1-4108a300855c">
+<img width="750" alt="pagination1" src="https://github.com/ryancanton/PureMatchTakeHomeChallenge/assets/113324661/d62efa5d-ef77-4e30-a42f-9c99e8fb1058">
+<img width="750" alt="pagination2" src="https://github.com/ryancanton/PureMatchTakeHomeChallenge/assets/113324661/0900ce58-7e54-48b0-8d16-fefcc1393378">
+<img width="750" alt="friends1" src="https://github.com/ryancanton/PureMatchTakeHomeChallenge/assets/113324661/bb37f8b4-8bb5-44bb-804c-f102e29367f9">
+<img width="750" alt="friends2" src="https://github.com/ryancanton/PureMatchTakeHomeChallenge/assets/113324661/6a939386-1029-44db-998f-91af9075014a">
+<img width="750" alt="Screen Shot 2023-11-14 at 8 34 34 PM" src="https://github.com/ryancanton/PureMatchTakeHomeChallenge/assets/113324661/b60d7d14-ec17-427d-b04d-0dafecb34a4d">
+
 </p>
 
 
