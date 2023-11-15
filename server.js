@@ -25,7 +25,7 @@ const db = require("./app/models");
 // force: true will drop the table if it already exists
 db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync Database with { force: true }');
-})
+});
 
 setTimeout(seeder.seedTables, 1000);
 // routes

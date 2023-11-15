@@ -69,8 +69,6 @@ exports.updatePost = (req, res) => {
 };
 
 exports.getPosts = (req, res) => {
-  console.log(req.body.page);
-  console.log(req.body.limit);
   Post.findAll({
     limit: req.body.limit,
     offset: req.body.page * req.body.limit

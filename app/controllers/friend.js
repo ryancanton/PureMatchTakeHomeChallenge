@@ -33,17 +33,15 @@ exports.getFriends = async (req, res) => {
     if (!user) {
       return res.status(404).send({ message: "User Not found." });
     }
-    getFriendObjects(user.id).then(async friends => {
+    Friend.findAll({where: {userId: user.id}}).then(async friends => {
       userData = [];
       for (i = 0; i < friends.length; i++) {
         const friend = friends[i]
         const mutualFriends = await getMutualFriendsCount(user.id, friends[i].friendId);
         friend.mutualFriendsCount = mutualFriends;
         friend.save;
-        console.log(`${friend.username} has mutualFriends = ${friend.mutualFriendsCount}`)
         userData.push(friend);
       }
-      console.log(`userData = ${JSON.stringify(userData)}`)
       res.status(200).send({ 
         friends: userData
       });
@@ -51,16 +49,10 @@ exports.getFriends = async (req, res) => {
 })
 };
 
-function getFriendObjects(id) {
-  return Friend.findAll({where: {userId: id}});
-}
 const getMutualFriendsCount = async (userId1, userId2) => {
   const mutualFriendsCount = await Friend.count({
       where: {
           userId: userId1,
-          // friendId: {
-
-          // }
           friendId: {
             [Sequelize.Op.in]: Sequelize.literal(`(
                 SELECT "friendId" FROM "friends" WHERE "userId" = ${userId2}

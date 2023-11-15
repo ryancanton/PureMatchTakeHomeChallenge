@@ -5,7 +5,7 @@ const Friend = db.friends;
 
 var bcrypt = require("bcrypt");
 
-exports.seedTables = async (req, res) => {
+exports.seedTables = async () => {
   const bob = User.create({
     username: "Bob",
     email: "bob@email.com",
